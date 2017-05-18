@@ -7,7 +7,8 @@ import java.awt.Graphics;
  * @author ewan633
  *
  */
-public class Unit {
+public class Unit//TO DO: Make Unit class use Map class to find location and more 
+{
 	
 	private int hp;
 	private int power;
@@ -81,7 +82,7 @@ public class Unit {
 	 * @param degree the direction to move
 	 * 
 	 */
-	public void move(int degree)
+	public void move(int degree)//will probably make move commands button direction based; WASD
 	{
 		
 		
