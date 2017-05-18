@@ -7,7 +7,7 @@ import java.awt.Graphics;
  * @author ewan633
  *
  */
-public class Unit//TO DO: Make Unit class use Map class to find location and more 
+public class Unit//TO DO: Make Unit class use Map class to find location and more. 
 {
 	
 	private int hp;
