@@ -108,15 +108,15 @@ public class Map {
 		int yCor = yDist;
 		
 		for(int x = 0; x < 20; x++) {
-			g.drawLine(xCor, 0, xCor, height);
-			g.drawLine(0, yCor, width, yCor);
 			for(int y = 0; y < 20; y++) {
 				if (map[x][y].getTerrain() == "land");
-					map[x][y].draw(g, x*xDist, yDist, y*yDist, yDist);
+					map[x][y].draw(g, x*xDist + 2, yDist, y*yDist, yDist);
 				if (map[x][y].getUnit() != null)
 					map[x][y].getUnit().draw(g, x*xDist + xDist/4, xDist/2, y*yDist + yDist/4, yDist/2);
 				
 			}
+			g.drawLine(xCor, 0, xCor, height);
+			g.drawLine(0, yCor, width, yCor);
 			xCor += xDist;
 			yCor += yDist;
 		}
