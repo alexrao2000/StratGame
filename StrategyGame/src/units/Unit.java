@@ -14,7 +14,7 @@ public class Unit {
 	private boolean isPlayerControlled;
 	private int movementDistance;
 	private int level;
-	//
+	
 	
 	/**
 	 * Creates a default unit with both hp and power at 10
