@@ -14,6 +14,7 @@ public class Map {
 				map[i][j] = new Tile("land");
 			}
 		}
+		map[0][0] = new Tile("land");
 	}
 	
 	public Tile getTile(int r, int c) {

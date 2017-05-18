@@ -1,5 +1,8 @@
 package map;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 import units.Unit;
 
 /**
@@ -36,6 +39,13 @@ public class Tile {
 	
 	public void removeUnit() {
 		unit = null;
+	}
+	
+	public void draw(Graphics g, int xCor, int xDist, int yCor, int yDist) {
+		g.setColor(Color.GREEN);
+		g.fillRect(xCor, yCor, xDist, yDist);
+		g.setColor(Color.BLACK);
+		
 	}
 
 }

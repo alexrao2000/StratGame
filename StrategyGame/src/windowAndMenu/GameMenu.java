@@ -24,7 +24,8 @@ public class GameMenu extends JPanel implements KeyListener {
 		setBackground(Color.WHITE);
 		map = new Map();
 		map.getTile(0, 0).addUnit(new Healer());
-		map.getTile(1, 1).addUnit(new Attacker());
+		map.getTile(8, 1).addUnit(new Attacker());
+		
 	}
 
 
