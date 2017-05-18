@@ -107,12 +107,12 @@ public class Map {
 		int xCor = xDist;
 		int yCor = yDist;
 		
-		for(int x = 0; x < 19; x++) {
+		for(int x = 0; x < 20; x++) {
 			g.drawLine(xCor, 0, xCor, height);
 			g.drawLine(0, yCor, width, yCor);
-			for(int y = 0; y < 19; y++) {
+			for(int y = 0; y < 20; y++) {
 				if (map[x][y].getUnit() != null) {
-					map[x][y].getUnit().draw(g, xCor + xDist/4, xDist/2, yCor + yDist/4, yDist/2);
+					map[x][y].getUnit().draw(g, x*xDist + xDist/4, xDist/2, y*yDist + yDist/4, yDist/2);
 				}
 			}
 			xCor += xDist;

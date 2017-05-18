@@ -1,5 +1,6 @@
 package units;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 /**This class represents a unit that can heal, a healer
@@ -51,8 +52,11 @@ public class Healer extends Unit
 	
 	public void draw(Graphics g, int xCor, int xDist, int yCor, int yDist)
 	{
-		g.drawRect(xCor, yCor, xDist, yDist);
-		
+		g.setColor(Color.RED);
+		if (isPlayerControlled)
+			g.setColor(Color.BLUE);
+		g.fillRect(xCor, yCor, xDist, yDist);
+		g.setColor(Color.BLACK);
 	}
 	
 }
