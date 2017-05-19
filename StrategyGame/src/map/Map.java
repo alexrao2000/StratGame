@@ -170,10 +170,9 @@ public class Map {
 		
 		for(int x = 0; x < 20; x++) {
 			for(int y = 0; y < 20; y++) {
-				map[x][y].draw(g, x*xDist + 2, yDist, y*yDist, yDist);
+				map[x][y].draw(g, x*xDist + 1, xDist - 1, y*yDist + 1, yDist - 1);
 				if (map[x][y].getUnit() != null)
 					map[x][y].getUnit().draw(g, x*xDist + xDist/4, xDist/2, y*yDist + yDist/4, yDist/2);
-				
 			}
 			g.drawLine(xCor, 0, xCor, height);
 			g.drawLine(0, yCor, width, yCor);

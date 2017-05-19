@@ -42,11 +42,10 @@ public class Tile {
 	}
 	
 	public void draw(Graphics g, int xCor, int xDist, int yCor, int yDist) {
-		if (terrain == "land") {
+		if (terrain == "land")
 			g.setColor(Color.GREEN);
-			g.fillRect(xCor, yCor, xDist, yDist);
-			g.setColor(Color.BLACK);
-		}
+		g.fillRect(xCor, yCor, xDist, yDist);
+		g.setColor(Color.BLACK);
 	}
 
 }
