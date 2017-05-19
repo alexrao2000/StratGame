@@ -172,6 +172,8 @@ public class Map {
 		int xCor = xDist;
 		int yCor = yDist;
 		
+		g.drawLine(0, 0, width, 0);
+		g.drawLine(0,  0, 0, height);
 		for(int x = 0; x < 20; x++) {
 			for(int y = 0; y < 20; y++) {
 				map[x][y].draw(g, x*xDist + 1, xDist - 1, y*yDist + 1, yDist - 1);
