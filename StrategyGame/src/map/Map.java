@@ -12,10 +12,10 @@ public class Map {
 		map = new Tile[20][20];
 		for (int i = 0; i < map[0].length; i++) {
 			for (int j = 0; j < map.length; j++) {
-				int x = (int) (Math.random() * 2);
-				if (x == 0)
+				int x = (int) (Math.random() * 4);
+				if (x > 0)
 					map[i][j] = new Tile("land");
-				else if (x == 1)
+				else if (x == 0)
 					map[i][j] = new Tile("sea");
 			}
 		}
