@@ -38,73 +38,6 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		players = new ArrayList<Unit>();
 		enemies = new ArrayList<Unit>();
 		
-<<<<<<< HEAD
-		for (Unit u:map.getAllUnits()) {
-			if(u.isPlayerControlled()) {
-				players.add(u);
-				playerTurn++;
-			} else if (!(u instanceof units.Object)) {
-				enemies.add(u);
-			}
-		}
-		
-	}
-
-
-	public void paintComponent(Graphics g)
-	{
-		super.paintComponent(g);  // Call JPanel's paintComponent method to paint the background
-
-		Graphics2D g2 = (Graphics2D)g;
-
-		int width = getWidth();
-		int height = getHeight();
-
-		double ratioX = (double)width/800.0;
-		double ratioY = (double)height/600.0;
-
-		AffineTransform at = g2.getTransform();
-		g2.scale(ratioX, ratioY);
-
-		g2.setTransform(at);
-
-		// TODO Add any custom drawings here
-		map.paintComponent(g2, height, width);
-	}
-
-
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		if (arg0.getKeyCode() == KeyEvent.VK_ESCAPE) {
-			m.changePanel("1");
-		}
-	}
-
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		if(playerTurn != 0) {
-			Unit u = players.get(playerTurn-1);
-			if(!isAttackPhase) {
-				int xPos = e.getX();
-				int yPos = e.getY();
-				MovementPhase mPhase = new MovementPhase(u);
-				mPhase.run(map.getUnitRow(u), map.getUnitCol(u), getHeight(), getWidth(), map);
-=======
 		
 		for (Tile tile:map.getAllTiles()) {
 			if(!tile.equals(null) && !tile.getUnit().equals(null)) {
@@ -212,7 +145,6 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 					}
 					
 				} 
->>>>>>> branch 'master' of https://github.com/alexrao2000/StrategyGame.git
 			}
 		}
 		
