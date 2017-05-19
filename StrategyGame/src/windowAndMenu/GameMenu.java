@@ -38,13 +38,16 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		players = new ArrayList<Unit>();
 		enemies = new ArrayList<Unit>();
 		
-		for (Unit u:map.getAllUnits()) {
-			if(u.isPlayerControlled()) {
-				players.add(u);
-				playerTurn++;
-			} else if (!(u instanceof units.Object)) {
-				enemies.add(u);
-			}
+		
+		for (Tile tile:map.getAllTiles()) {
+			if(!tile.equals(null) && !tile.getUnit().equals(null)) {
+				if(tile.getUnit().isPlayerControlled()) {
+					players.add(tile.getUnit());
+					playerTurn++;
+				} else if (!(tile.getUnit() instanceof units.Object)) {
+					enemies.add(tile.getUnit());
+				}
+			} 
 		}
 		
 	}
@@ -97,12 +100,51 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(playerTurn != 0) {
+			
 			Unit u = players.get(playerTurn-1);
+			int xPos = e.getX();
+			int yPos = e.getY();
+			
 			if(!isAttackPhase) {
-				int xPos = e.getX();
-				int yPos = e.getY();
+				
 				MovementPhase mPhase = new MovementPhase(u);
-				mPhase.run(map.getUnitRow(u), map.getUnitCol(u), getHeight(), getWidth(), map);
+				
+				if(map.getTile(xPos, yPos, getHeight(), getWidth()).getUnit().equals(null)) { 
+					
+					mPhase.run(map.getTileRow(map.getTile(xPos, yPos, getHeight(), getWidth())), 
+							map.getTileCol(map.getTile(xPos, yPos, getHeight(), getWidth())), getHeight(), 
+							getWidth(), map);
+					
+					isAttackPhase = true;
+				}
+				
+			} else {
+				
+				Tile other = map.getTile(xPos, yPos, getHeight(), getWidth());
+				
+				if(other.getUnit().equals(null)) {
+					
+					MovementPhase mPhase = new MovementPhase(u);
+					
+					mPhase.run(map.getTileRow(other), map.getTileCol(other), getHeight(), getWidth(), map);
+					
+					isAttackPhase = false;
+					
+				} else if(other.getUnit() instanceof Attacker) {
+					
+					if(!other.getUnit().isPlayerControlled()) {
+						other.getUnit().takeDamage(u.getPower());
+						isAttackPhase = false;
+					}
+					
+				} else if(u instanceof Healer) {
+					
+					if(other.getUnit().isPlayerControlled()) {
+						((Healer) u).heal(other.getUnit());
+						isAttackPhase = false;
+					}
+					
+				} 
 			}
 		}
 		

@@ -33,16 +33,12 @@ public class Map {
 		}
 	}
 	
-	public ArrayList<Unit> getAllUnits() {
-		ArrayList<Unit> allUnits = new ArrayList<Unit>();
+	public ArrayList<Tile> getAllTiles() {
+		ArrayList<Tile> allUnits = new ArrayList<Tile>();
 		
 		for(int r = 0; r < 20; r++) {
 			for(int c = 0; c < 20; c++) {
-				if(!map[r][c].equals(null)) {
-					if(!(map[r][c].getUnit() instanceof units.Object)) {
-						allUnits.add(map[r][c].getUnit());
-					}
-				}
+					allUnits.add(map[r][c]);
 			}
 		}	
 		
