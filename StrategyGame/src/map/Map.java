@@ -33,6 +33,27 @@ public class Map {
 		return null;
 	}
 	
+	public Tile getTile(int xPos, int yPos, int height, int width) {
+		int boxWidth = width/20;
+		int boxHeight = height/20;
+		
+		int xCurr = 0;
+		int yCurr = 0;
+		
+		for(int x = 0; x < 20; x++) {
+			for(int y = 0; y < 20; y++) {
+				if(xPos > xCurr && xPos < xCurr+boxWidth && yPos > yCurr && yPos < yCurr+boxHeight) {
+					return map[y][x];
+				}
+				xCurr += boxWidth;
+			}
+			yCurr += boxHeight;
+			xCurr = 0;
+		}
+		
+		return null;
+	}
+	
 	public Unit getObjectAtSpot(int r, int c) {
 		if(r >= 0 && r < 20 && c >= 0 && c < 20) {
 			return map[r][c].getUnit();
@@ -80,12 +101,7 @@ public class Map {
 		return -1;
 	}
 	
-	public int getUnitRow(int xPos, int yPos, int height, int width) {
-		int box = width/20;
-		int yDist = height/20;
-		
-		return -1;
-	}
+	
 	
 	public int getUnitCol(Unit u) {
 		for(int r = 0; r < 15; r++) {
