@@ -68,7 +68,7 @@ public class Map {
 		for(int x = 0; x < 20; x++) {
 			for(int y = 0; y < 20; y++) {
 				if(xPos > xCurr && xPos < xCurr+boxWidth && yPos > yCurr && yPos < yCurr+boxHeight) {
-					return map[y][x];
+					return map[x][y];
 				}
 				xCurr += boxWidth;
 			}
@@ -77,6 +77,30 @@ public class Map {
 		}
 		
 		return null;
+	}
+	
+	public int getTileRow(Tile tile) {
+		for(int x = 0; x < 20; x++) {
+			for(int y = 0; y < 20; y++) {
+				if(map[x][y].equals(tile)) {
+					return x; 
+				}
+			}
+		}
+		
+		return -1;
+	}
+	
+	public int getTileCol(Tile tile) {
+		for(int x = 0; x < 20; x++) {
+			for(int y = 0; y < 20; y++) {
+				if(map[x][y].equals(tile)) {
+					return y; 
+				}
+			}
+		}
+		
+		return -1;
 	}
 	
 	public Unit getObjectAtSpot(int r, int c) {

@@ -5,26 +5,47 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import map.Map;
-import units.Attacker;
-import units.Healer;
+import map.*;
+import units.*;
 
 
-public class GameMenu extends JPanel implements KeyListener {
+public class GameMenu extends JPanel implements KeyListener, MouseListener {
 	private Map map;
 	private Main m;
+	private ArrayList<Unit> players;
+	private ArrayList<Unit> enemies;
+	private int playerTurn;
+	private boolean isAttackPhase;
 
 	public GameMenu (Main m) {
 		super();
 		this.m = m;
 		setBackground(Color.WHITE);
+		
 		map = new Map();
 		map.getTile(0, 0).addUnit(new Healer());
 		map.getTile(8, 1).addUnit(new Attacker());
+		
+		playerTurn = 0;
+		isAttackPhase = false;
+		players = new ArrayList<Unit>();
+		enemies = new ArrayList<Unit>();
+		
+		for (Unit u:map.getAllUnits()) {
+			if(u.isPlayerControlled()) {
+				players.add(u);
+				playerTurn++;
+			} else if (!(u instanceof units.Object)) {
+				enemies.add(u);
+			}
+		}
 		
 	}
 
@@ -70,6 +91,49 @@ public class GameMenu extends JPanel implements KeyListener {
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(playerTurn != 0) {
+			Unit u = players.get(playerTurn-1);
+			if(!isAttackPhase) {
+				int xPos = e.getX();
+				int yPos = e.getY();
+				MovementPhase mPhase = new MovementPhase(u);
+				mPhase.run(map.getUnitRow(u), map.getUnitCol(u), getHeight(), getWidth(), map);
+			}
+		}
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
