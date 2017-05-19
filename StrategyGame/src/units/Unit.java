@@ -56,7 +56,7 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 	
 	/**Makes the unit suffer damage
 	 * 
-	 * @param weapon the weapon used to attack this unit
+	 * @param amount the amount of damage the unit takes
 	 */
 	public void takeDamage(int amount)
 	{
@@ -65,6 +65,7 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 	
 	/**Checks whether or not the unit is alive
 	 * 
+	 * @return if the unit is alive or dead
 	 */
 	public boolean isAlive()
 	{
@@ -72,20 +73,25 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 		{
 			return false;
 		}
-		else {
-			return true;
-		}
+		return true;
 	}
 	
 	/**Moves the unit
 	 * 
 	 * @param degree the direction to move
-	 * 
 	 */
 	public void move(int degree)//will probably make move commands button direction based; WASD
 	{
 		
 		
+	}
+	
+	/**Returns the hp the unit has
+	 * 
+	 * @return the current hp of the unit
+	 */
+	public int getHP() {
+		return hp;
 	}
 	
 	/**Returns the power level of the unit
@@ -102,10 +108,19 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 	
 	/**Returns the distance the unit can move in one turn
 	 * 
-	 * @return
+	 * @return the distance the unit can move
 	 */
 	public int getMovementDistance() {
 		return movementDistance;
+	}
+	
+	
+	/**Returns the level of the unit
+	 * 
+	 * @return the current level of the unit
+	 */
+	public int getLevel() {
+		return level;
 	}
 	
 	/**Levels the unit up; increases hp and power by a random number
@@ -118,11 +133,24 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 		power += (int)(Math.random()*10);
 	}
 	
+	
+	/**Returns whether or not the unit is player controlled
+	 * 
+	 * @return whether or not the unit is controlled by the player
+	 */
 	public boolean isPlayerControlled()
 	{
 		return isPlayerControlled;
 	}
-
+	
+	/**Draws the unit
+	 * 
+	 * @param g the Graphics class used to draw the unit
+	 * @param xCor the x coordinate of the unit
+	 * @param xDist the width of the unit
+	 * @param yCor the y coordinate of the unit
+	 * @param yDist the height of the unit
+	 */
 	public void draw(Graphics g, int xCor, int xDist, int yCor, int yDist)
 	{
 		g.drawOval(xCor, yCor, xDist, yDist);
