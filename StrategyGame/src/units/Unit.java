@@ -14,6 +14,7 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 	private int power;
 	private boolean isPlayerControlled;
 	private int movementDistance;
+	private int attackDistance;
 	private int level;
 	
 	
@@ -25,6 +26,7 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 		hp = 10;
 		power = 10;
 		movementDistance = 10;
+		attackDistance = 10;
 		level = 1;
 	}
 	
@@ -35,12 +37,13 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 	 * @param power the amount of damage/healing the unit will do
 	 * @param movementDistance how far the unit can move in one time
 	 */
-	public Unit(boolean isPlayerControlled, int hp, int power, int movementDistance)
+	public Unit(boolean isPlayerControlled, int hp, int power, int movementDistance, int attackDistance)
 	{
 		this.isPlayerControlled = isPlayerControlled;
 		this.hp = hp;
 		this.power = power;
 		this.movementDistance = movementDistance;
+		this.attackDistance = attackDistance;
 		level = 1;
 	}
 	
@@ -112,6 +115,14 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 	 */
 	public int getMovementDistance() {
 		return movementDistance;
+	}
+	
+	/**Returns the distance the unit can attack from
+	 * 
+	 * @return the distance the unit can attack from
+	 */
+	public int getAttackDistance() {
+		return attackDistance;
 	}
 	
 	
