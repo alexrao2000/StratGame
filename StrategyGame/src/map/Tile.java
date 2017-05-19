@@ -44,6 +44,8 @@ public class Tile {
 	public void draw(Graphics g, int xCor, int xDist, int yCor, int yDist) {
 		if (terrain == "land")
 			g.setColor(Color.GREEN);
+		else if (terrain == "sea")
+			g.setColor(Color.CYAN);
 		g.fillRect(xCor, yCor, xDist, yDist);
 		g.setColor(Color.BLACK);
 	}
