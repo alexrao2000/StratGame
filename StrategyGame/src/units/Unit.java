@@ -61,19 +61,19 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 	public void takeDamage(int amount)
 	{
 		hp -= amount;
-		
-		if(hp <= 0)
-			die();
 	}
 	
-	/**Makes unit die and removes him from grid
+	/**Checks whether or not the unit is alive
 	 * 
 	 */
-	public void die()
+	public boolean isAlive()
 	{
 		if(hp <= 0)
 		{
-			
+			return false;
+		}
+		else {
+			return true;
 		}
 	}
 	
