@@ -2,6 +2,7 @@ package map;
 
 import units.Unit;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class Map {
 	
@@ -16,12 +17,36 @@ public class Map {
 		}
 	}
 	
+	public int getRows() {
+		return map.length;
+	}
+	
+	public int getCols() {
+		return map[0].length;
+	}
+	
 	public void changeUnitPlace(Unit u, int newR, int newC) {
 		if(newR < 15 && newR >= 0 && newC < 15 &&  newC >= 0 && map[newR][newC].equals(null)) {
 			Unit x = map[getUnitRow(u)][getUnitCol(u)].getUnit();
 			map[getUnitRow(u)][getUnitCol(u)].removeUnit();
 			map[newR][newC].addUnit(x);
 		}
+	}
+	
+	public ArrayList<Unit> getAllUnits() {
+		ArrayList<Unit> allUnits = new ArrayList<Unit>();
+		
+		for(int r = 0; r < 20; r++) {
+			for(int c = 0; c < 20; c++) {
+				if(!map[r][c].equals(null)) {
+					if(!(map[r][c].getUnit() instanceof units.Object)) {
+						allUnits.add(map[r][c].getUnit());
+					}
+				}
+			}
+		}	
+		
+		return allUnits;
 	}
 	
 	public Tile getTile(int r, int c) {
