@@ -10,11 +10,6 @@ import java.awt.Graphics;
  */
 public class Healer extends Unit
 {
-	private int hp;
-	private int power;
-	private int level;
-	private int movementDistance;
-	private boolean isPlayerControlled;
 	
 	
 	/**Creates a default healer object
@@ -22,22 +17,20 @@ public class Healer extends Unit
 	 */
 	public Healer()
 	{
-		hp = 5;
-		power = 10;
-		movementDistance = 15;
-		level = 1;
+		super(true, 5, 10, 15, 0);
 	}
 	
 	/**Creates a healer
 	 * 
-	 * @param hp the healer's health points
-	 * @param power the amount of healer the healer does
+	 * @param isPlayerControlled whether or not the player controls the unit
+	 * @param hp the amount of health points the unit will have
+	 * @param power the amount of damage/healing the unit will do
+	 * @param movementDistance how far the unit can move in one time
+	 * @param healDistance how far the unit can heal
 	 */
-	public Healer(boolean isPlayerControlled, int hp, int power)
+	public Healer(boolean isPlayerControlled, int hp, int power, int movementDistance, int healDistance)
 	{
-		this.isPlayerControlled = isPlayerControlled;
-		this.hp = hp;
-		this.power = power;
+		super(isPlayerControlled, hp, power, movementDistance, healDistance);
 	}
 
 	/**Heals a unit
@@ -50,10 +43,18 @@ public class Healer extends Unit
 		
 	}
 	
+	/**Draws the unit
+	 * 
+	 * @param g the Graphics class used to draw the unit
+	 * @param xCor the x coordinate of the unit
+	 * @param xDist the width of the unit
+	 * @param yCor the y coordinate of the unit
+	 * @param yDist the height of the unit
+	 */
 	public void draw(Graphics g, int xCor, int xDist, int yCor, int yDist)
 	{
 		g.setColor(Color.RED);
-		if (isPlayerControlled)
+		if (super.isPlayerControlled())
 			g.setColor(Color.BLUE);
 		g.fillRect(xCor, yCor, xDist, yDist);
 		g.setColor(Color.BLACK);
