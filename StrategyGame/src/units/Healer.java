@@ -17,7 +17,7 @@ public class Healer extends Unit
 	 */
 	public Healer()
 	{
-		super(true, 5, 10, 15, 0);
+		super(true, 5, 10, 10, 0);
 	}
 	
 	/**Creates a healer

@@ -1,13 +1,15 @@
 package units;
 
 import java.awt.Graphics;
+import map.Map;
+import map.Tile;
 
 /**This class represents a Unit object on the grid
  * 
  * @author ewan633
  *
  */
-public class Unit//TO DO: Make Unit class use Map class to find location and more. 
+public class Unit
 {
 	
 	private int hp;
@@ -16,6 +18,7 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 	private int movementDistance;
 	private int attackDistance;
 	private int level;
+	private Tile[][] map;
 	
 	
 	/**
@@ -46,6 +49,7 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 		this.movementDistance = movementDistance;
 		this.attackDistance = attackDistance;
 		level = 1;
+		//map == null;
 	}
 	
 	/**Heals the unit
@@ -80,12 +84,20 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 		return true;
 	}
 	
+	public void insertSelf(Tile tile, int row, int col)
+	{
+		if(tile.getUnit() == null)
+			tile.addUnit(this);
+	}
+	
 	/**Moves the unit
 	 * 
 	 * @param degree the direction to move
 	 */
-	public void move(int degree)//will probably make move commands button direction based; WASD
+	public void move()//will probably make move commands button direction based; WASD
 	{
+		int movedist = movementDistance;
+		
 		
 		
 	}
@@ -154,6 +166,7 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 	{
 		return isPlayerControlled;
 	}
+	
 	
 	/**Draws the unit
 	 * 
