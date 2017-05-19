@@ -36,6 +36,7 @@ public class Unit//TO DO: Make Unit class use Map class to find location and mor
 	 * @param hp the amount of health points the unit will have
 	 * @param power the amount of damage/healing the unit will do
 	 * @param movementDistance how far the unit can move in one time
+	 * @param attackDistance how far the unit can attack
 	 */
 	public Unit(boolean isPlayerControlled, int hp, int power, int movementDistance, int attackDistance)
 	{
