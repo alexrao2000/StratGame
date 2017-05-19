@@ -39,6 +39,16 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		enemies = new ArrayList<Unit>();
 		
 		
+		for (Tile tile:map.getAllTiles()) {
+			if(!tile.equals(null) && !tile.getUnit().equals(null)) {
+				if(tile.getUnit().isPlayerControlled()) {
+					players.add(tile.getUnit());
+					playerTurn++;
+				} else if (!(tile.getUnit() instanceof units.Object)) {
+					enemies.add(tile.getUnit());
+				}
+			} 
+		}
 		
 	}
 
