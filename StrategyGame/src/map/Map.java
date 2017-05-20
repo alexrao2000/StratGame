@@ -38,15 +38,15 @@ public class Map {
 	}
 	
 	public ArrayList<Tile> getAllTiles() {
-		ArrayList<Tile> allUnits = new ArrayList<Tile>();
+		ArrayList<Tile> allTiles = new ArrayList<Tile>();
 		
 		for(int r = 0; r < 20; r++) {
 			for(int c = 0; c < 20; c++) {
-					allUnits.add(map[r][c]);
+					allTiles.add(map[r][c]);
 			}
 		}	
 		
-		return allUnits;
+		return allTiles;
 	}
 	
 	public Tile getTile(int r, int c) {
