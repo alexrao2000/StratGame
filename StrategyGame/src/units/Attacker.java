@@ -11,7 +11,7 @@ public class Attacker extends Unit{
 	
 	public Attacker()
 	{
-		super(true, 10, 10, 15, 5);
+		super(true, 10, 10, 15, 1);
 		weapon = new Weapon();
 	}
 	
