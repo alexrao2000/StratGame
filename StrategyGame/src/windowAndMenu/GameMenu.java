@@ -38,7 +38,8 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		players = new ArrayList<Unit>();
 		enemies = new ArrayList<Unit>();
 		
-		
+		addMouseListener(this);
+
 		for (Tile tile:map.getAllTiles()) {
 			if(!tile.equals(null) && !tile.getUnit().equals(null)) {
 				if(tile.getUnit().isPlayerControlled()) {
@@ -49,7 +50,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 				}
 			} 
 		}
-		
+		//
 	}
 
 
@@ -99,6 +100,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		System.out.print("hi");
 		if(playerTurn != 0) {
 			
 			Unit u = players.get(playerTurn-1);
