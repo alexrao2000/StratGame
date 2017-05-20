@@ -3,19 +3,19 @@ package units;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Attacker extends Unit{
+public class RangeAttacker extends Unit{
 	
 	
 	//private ArrayList<Weapon> weapons;
 	private Weapon weapon;
 	
-	public Attacker()
+	public RangeAttacker()
 	{
-		super(true, 10, 10, 15, 1);
+		super(true, 10, 10, 15, 5);
 		weapon = new Weapon();
 	}
 	
-	/**Creates an attacker object that can move and attack
+	/**Creates an attacker object that can move and attack from a distance
 	 * 
 	 * @param isPlayerControlled whether or not the player controls the unit
 	 * @param hp the amount of health points the unit will have
@@ -23,7 +23,7 @@ public class Attacker extends Unit{
 	 * @param movementDistance how far the unit can move in one time
 	 * @param attackDistance how far the unit can attack
 	 */
-	public Attacker(boolean isPlayerControlled, int hp, int power, int movementDistance, int attackDistance)
+	public RangeAttacker(boolean isPlayerControlled, int hp, int power, int movementDistance, int attackDistance)
 	{
 		super(isPlayerControlled, hp, power, movementDistance, attackDistance);
 		weapon = new Weapon();
@@ -62,7 +62,7 @@ public class Attacker extends Unit{
 	{
 		g.setColor(Color.RED);
 		if (super.isPlayerControlled())
-			g.setColor(Color.BLUE);
+			g.setColor(Color.GREEN);
 		g.fillOval(xCor, yCor, xDist, yDist);
 		g.setColor(Color.BLACK);
 		

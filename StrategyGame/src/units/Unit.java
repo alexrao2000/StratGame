@@ -16,7 +16,7 @@ public class Unit
 	private int power;
 	private boolean isPlayerControlled;
 	private int movementDistance;
-	private int attackDistance;
+	private int actionDistance;//the distance the unit can heal/attack
 	private int level;
 	private Tile[][] map;
 	
@@ -29,7 +29,7 @@ public class Unit
 		hp = 10;
 		power = 10;
 		movementDistance = 10;
-		attackDistance = 10;
+		actionDistance = 1;
 		level = 1;
 	}
 	
@@ -39,15 +39,15 @@ public class Unit
 	 * @param hp the amount of health points the unit will have
 	 * @param power the amount of damage/healing the unit will do
 	 * @param movementDistance how far the unit can move in one time
-	 * @param attackDistance how far the unit can attack
+	 * @param actionDistance how far the unit can attack
 	 */
-	public Unit(boolean isPlayerControlled, int hp, int power, int movementDistance, int attackDistance)
+	public Unit(boolean isPlayerControlled, int hp, int power, int movementDistance, int actionDistance)
 	{
 		this.isPlayerControlled = isPlayerControlled;
 		this.hp = hp;
 		this.power = power;
 		this.movementDistance = movementDistance;
-		this.attackDistance = attackDistance;
+		this.actionDistance = actionDistance;
 		level = 1;
 		//map == null;
 	}
@@ -135,7 +135,7 @@ public class Unit
 	 * @return the distance the unit can attack from
 	 */
 	public int getAttackDistance() {
-		return attackDistance;
+		return actionDistance;
 	}
 	
 	
