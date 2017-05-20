@@ -8,11 +8,13 @@ public class Attacker extends Unit{
 	
 	//private ArrayList<Weapon> weapons;
 	private Weapon weapon;
+	private String name;
 	
 	public Attacker()
 	{
 		super(true, 10, 10, 15, 1);
 		weapon = new Weapon();
+		name = "Attacker";
 	}
 	
 	/**Creates an attacker object that can move and attack
@@ -27,6 +29,11 @@ public class Attacker extends Unit{
 	{
 		super(isPlayerControlled, hp, power, movementDistance, attackDistance);
 		weapon = new Weapon();
+		name = "";
+		if(isPlayerControlled) {
+			name += "Enemy ";
+		}
+		name += "Attacker";
 		//weapons = new ArrayList<Weapon>();
 	}
 	
@@ -48,6 +55,14 @@ public class Attacker extends Unit{
 	{
 		//weapons.add(weapon);
 		this.weapon = weapon;
+	}
+	
+	/**Returns the name of the unit
+	 * 
+	 * @return the name of the unit
+	 */
+	public String getName() {
+		return name;
 	}
 	
 	/**Draws the unit

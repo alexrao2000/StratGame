@@ -18,7 +18,7 @@ public class Unit
 	private int movementDistance;
 	private int actionDistance;//the distance the unit can heal/attack
 	private int level;
-	private Tile[][] map;
+	private String name;
 	
 	
 	/**
@@ -31,6 +31,7 @@ public class Unit
 		movementDistance = 10;
 		actionDistance = 1;
 		level = 1;
+		name = "Unit";
 	}
 	
 	/**Creates a unit
@@ -49,6 +50,11 @@ public class Unit
 		this.movementDistance = movementDistance;
 		this.actionDistance = actionDistance;
 		level = 1;
+		name = "";
+		if(isPlayerControlled) {
+			name += "Enemy ";
+		}
+		name += "Unit";
 		//map == null;
 	}
 	
@@ -145,6 +151,14 @@ public class Unit
 	 */
 	public int getLevel() {
 		return level;
+	}
+	
+	/**Returns the name of the unit
+	 * 
+	 * @return the name of the unit
+	 */
+	public String getName() {
+		return name;
 	}
 	
 	/**Levels the unit up; increases hp and power by a random number

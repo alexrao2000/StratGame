@@ -10,7 +10,7 @@ import java.awt.Graphics;
  */
 public class Healer extends Unit
 {
-	
+	private String name;
 	
 	/**Creates a default healer object
 	 * 
@@ -18,6 +18,7 @@ public class Healer extends Unit
 	public Healer()
 	{
 		super(true, 5, 10, 10, 5);
+		name = "Healer";
 	}
 	
 	/**Creates a healer
@@ -31,6 +32,11 @@ public class Healer extends Unit
 	public Healer(boolean isPlayerControlled, int hp, int power, int movementDistance, int healDistance)
 	{
 		super(isPlayerControlled, hp, power, movementDistance, healDistance);
+		name = "";
+		if(isPlayerControlled) {
+			name += "Enemy ";
+		}
+		name += "Healer";
 	}
 
 	/**Heals a unit
@@ -41,6 +47,14 @@ public class Healer extends Unit
 	{
 		other.getHealed(this);
 		
+	}
+	
+	/**Returns the name of the unit
+	 * 
+	 * @return the name of the unit
+	 */
+	public String getName() {
+		return name;
 	}
 	
 	/**Draws the unit
