@@ -35,9 +35,9 @@ public class Attacker extends Unit{
 		}
 		
 		if(attackDistance == 1)
-			name = "Attacker";
+			name += "Attacker";
 		else if(attackDistance > 1)
-			name = "Archer";
+			name += "Archer";
 		//weapons = new ArrayList<Weapon>();
 	}
 	
