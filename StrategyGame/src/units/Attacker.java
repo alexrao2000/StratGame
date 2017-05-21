@@ -33,7 +33,11 @@ public class Attacker extends Unit{
 		if(isPlayerControlled) {
 			name += "Enemy ";
 		}
-		name += "Attacker";
+		
+		if(attackDistance == 1)
+			name = "Attacker";
+		else if(attackDistance > 1)
+			name = "Archer";
 		//weapons = new ArrayList<Weapon>();
 	}
 	
