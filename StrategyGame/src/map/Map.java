@@ -19,6 +19,16 @@ public class Map {
 					map[i][j] = new Tile("sea");
 			}
 		}
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				map[i][j] = new Tile("land");
+			}
+		}
+		for (int i = 15; i < map[0].length; i++) {
+			for (int j = 15; j < map.length; j++) {
+				map[i][j] = new Tile("land");
+			}
+		}
 	}
 	
 	public int getRows() {

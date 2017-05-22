@@ -29,28 +29,25 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		this.m = m;
 		setBackground(Color.WHITE);
 		
+		Healer healer = new Healer();
+		Attacker attacker = new Attacker();
+		
 		map = new Map();
-		map.getTile(0, 0).addUnit(new Healer());
-		map.getTile(8, 1).addUnit(new Attacker());
+		map.getTile(0, 0).addUnit(healer);
+		map.getTile(4, 4).addUnit(attacker);
 		
 		playerTurn = 0;
 		isAttackPhase = false;
 		players = new ArrayList<Unit>();
+		players.add(healer);
+		players.add(attacker);
+		
 		enemies = new ArrayList<Unit>();
 		
 		addMouseListener(this);
+
 		
-		for (Tile tile:map.getAllTiles()) {
-			if(!tile.equals(null) && !tile.getUnit().equals(null)) {
-				if(tile.getUnit().isPlayerControlled()) {
-					players.add(tile.getUnit());
-					playerTurn++;
-				} else if (!(tile.getUnit() instanceof units.Object)) {
-					enemies.add(tile.getUnit());
-				}
-			} 
-		}
-		
+		//
 	}
 
 
@@ -108,6 +105,8 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 			int yPos = e.getY();
 			
 			if(!isAttackPhase) {
+				
+				
 				
 				MovementPhase mPhase = new MovementPhase(u);
 				
