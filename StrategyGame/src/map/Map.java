@@ -37,16 +37,8 @@ public class Map {
 		}
 	}
 	
-	public ArrayList<Tile> getAllTiles() {
-		ArrayList<Tile> allTiles = new ArrayList<Tile>();
-		
-		for(int r = 0; r < 20; r++) {
-			for(int c = 0; c < 20; c++) {
-					allTiles.add(map[r][c]);
-			}
-		}	
-		
-		return allTiles;
+	public Tile[][] getAllTiles() {
+		return map;
 	}
 	
 	public Tile getTile(int r, int c) {
