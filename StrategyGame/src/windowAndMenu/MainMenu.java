@@ -13,8 +13,6 @@ public class MainMenu extends JPanel implements ActionListener {
 	private Image img;
 	JButton button1;
 	JButton button2;
-	JButton button3;
-	JButton button4;
 	
 	public MainMenu(Main m) {
 		this.m = m;
@@ -28,19 +26,13 @@ public class MainMenu extends JPanel implements ActionListener {
 		img = img.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
 		
 		button1 = new JButton("Start");
-		button2 = new JButton("Load");
-		button3 = new JButton("Options");
-		button4 = new JButton("Quit");
+		button2 = new JButton("Quit");
 		
 		button1.addActionListener(this);
 		button2.addActionListener(this);
-		button3.addActionListener(this);
-		button4.addActionListener(this);
 		
 		p.add(button1);
 		p.add(button2);
-		p.add(button3);
-		p.add(button4);
 		add(p);
 	}
 	
@@ -68,10 +60,6 @@ public class MainMenu extends JPanel implements ActionListener {
 		if (e.getSource() == button1)
 			m.changePanel("2");
 		if (e.getSource() == button2)
-			m.changePanel("1");
-		if (e.getSource() == button3)
-			m.changePanel("1");
-		if (e.getSource() == button4)
 			m.dispose();
 	}
 
