@@ -8,6 +8,10 @@ public class Main extends JFrame {
 
 	private JPanel cardPanel;
 	
+	/**
+	 * Creates a game window that switches between MainMenu and GameMenu
+	 * @param title title of the game
+	 * */
 	public Main(String title) {
 		super(title);
 		
@@ -33,7 +37,7 @@ public class Main extends JFrame {
 
 	public static void main(String[] args)
 	{
-		Main w = new Main("StrategyGame");
+		Main w = new Main("Batallion");
 	}
   
 	public void changePanel(String name) {
