@@ -39,6 +39,7 @@ public class Map {
 		return map[0].length;
 	}
 	
+	
 	public void changeUnitPlace(Unit u, int newR, int newC) {
 		if(newR < 15 && newR >= 0 && newC < 15 &&  newC >= 0 && map[newR][newC].equals(null)) {
 			Unit x = map[getUnitRow(u)][getUnitCol(u)].getUnit();
@@ -49,6 +50,15 @@ public class Map {
 	
 	public Tile[][] getAllTiles() {
 		return map;
+	}
+	
+	public Tile getTile(Unit u) {
+		int c = getUnitCol(u);
+		int r = getUnitRow(u);
+		if(r >= 0 && r < 20 && c >= 0 && c < 20) {
+			return map[r][c];
+		}
+		return new Tile("nonexistent");
 	}
 	
 	public Tile getTile(int r, int c) {
@@ -79,6 +89,36 @@ public class Map {
 		}
 		
 		return null;
+	}
+	
+	public int getTileXPos(Tile tile, int width) {
+		int ratio = width/20;
+		int answer = 0;
+		for(int x = 0; x < 20; x++) {
+			for(int y = 0; y < 20; y++) {
+				if(map[y][x].equals(tile)) {
+					return answer+1; 
+				}
+			}
+			answer += ratio;
+		}
+		
+		return -1;
+	}
+	
+	public int getTileYPos(Tile tile, int height) {
+		int ratio = height/20;
+		int answer = 0;
+		for(int x = 0; x < 20; x++) {
+			for(int y = 0; y < 20; y++) {
+				if(map[x][y].equals(tile)) {
+					return answer+1; 
+				}
+			}
+			answer += ratio;
+		}
+		
+		return -1;
 	}
 	
 	public int getTileRow(Tile tile) {
