@@ -38,7 +38,7 @@ public class Tile {
 	}
 	
 	public boolean hasUnit() {
-		if(unit.equals(null)) {
+		if(unit == null) {
 			return false;
 		}
 		return true;
