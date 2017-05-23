@@ -14,6 +14,10 @@ public class MainMenu extends JPanel implements ActionListener {
 	JButton button1;
 	JButton button2;
 	
+	/**
+	 * Constructs a main menu
+	 * @param m the main class
+	 * */
 	public MainMenu(Main m) {
 		this.m = m;
 		JPanel p = new JPanel();
@@ -36,6 +40,10 @@ public class MainMenu extends JPanel implements ActionListener {
 		add(p);
 	}
 	
+	/**
+	 * Draws the main menu
+	 * @param g the graphics object
+	 * */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
