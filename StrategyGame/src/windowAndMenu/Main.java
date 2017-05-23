@@ -25,8 +25,8 @@ public class Main extends JFrame {
 		MainMenu panel1 = new MainMenu(this);    
 		GameMenu panel2 = new GameMenu(this);
 
-	    cardPanel.add(panel1,"1"); // Card is named "1"
-	    cardPanel.add(panel2,"2"); // Card is named "2"
+	    cardPanel.add(panel1,"1");
+	    cardPanel.add(panel2,"2");
 	    
 	    add(cardPanel);
 	    addKeyListener(panel2);

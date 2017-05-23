@@ -71,7 +71,7 @@ public class Map {
 		return new Tile("nonexistent");
 	}
 	
-	public Tile getTile(int xPos, int yPos, int height, int width) {
+	public Tile getTile(int xPos, int yPos, int width, int height) {
 		int boxWidth = width/20;
 		int boxHeight = height/20;
 		
@@ -100,7 +100,7 @@ public class Map {
 		int answer = 0;
 		for(int x = 0; x < 20; x++) {
 			for(int y = 0; y < 20; y++) {
-				if(map[y][x].equals(tile)) {
+				if(map[x][y].equals(tile)) {
 					return answer+1; 
 				}
 			}
