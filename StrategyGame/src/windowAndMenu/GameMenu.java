@@ -150,6 +150,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 					oldTile.removeUnit();
 					isAttackPhase = true;
 					u.setCanMove(false);
+					
 				}
 				
 			} else {
@@ -178,6 +179,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 					
 				} 
 			}
+			playerTurn++;
 		}
 		
 	}
