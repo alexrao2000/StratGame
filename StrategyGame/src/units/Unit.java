@@ -96,18 +96,6 @@ public class Unit
 			tile.addUnit(this);
 	}
 	
-	/**Moves the unit
-	 * 
-	 * @param degree the direction to move
-	 */
-	public void move()//will probably make move commands button direction based; WASD
-	{
-		int movedist = movementDistance;
-		
-		
-		
-	}
-	
 	/**Returns the hp the unit has
 	 * 
 	 * @return the current hp of the unit
