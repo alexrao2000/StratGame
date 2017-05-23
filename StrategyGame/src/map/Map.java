@@ -80,7 +80,7 @@ public class Map {
 		for(int x = 0; x < 20; x++) {
 			for(int y = 0; y < 20; y++) {
 				if(xPos > xCurr && xPos < xCurr+boxWidth && yPos > yCurr && yPos < yCurr+boxHeight) {
-					System.out.println("(xPos:"+xCurr+", yPos:"+yCurr+")");
+					//System.out.println("(xPos:"+xCurr+", yPos:"+yCurr+")");
 					return map[x][y];
 					
 				}

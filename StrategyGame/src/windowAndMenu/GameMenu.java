@@ -40,12 +40,12 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		Attacker eAttacker = new Attacker(false, 5, 5, 5, 1);
 		
 		map = new Map();
-		map.getTile(0, 0).addUnit(healer);
+		map.getTile(0, 1).addUnit(healer);
 		map.getTile(4, 4).addUnit(attacker);
 		map.getTile(19, 19).addUnit(eHealer);
 		map.getTile(15, 15).addUnit(eAttacker);
 		
-		playerTurn = 2;
+		playerTurn = 1;
 		isAttackPhase = false;
 		players = new ArrayList<Unit>();
 		players.add(healer);
@@ -93,14 +93,15 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 			int x = map.getTileXPos(tile, getWidth());
 			int y = map.getTileYPos(tile, getHeight()); 
 			g2.setColor(Color.RED);
-			int moveDistX = u.getMovementDistance()*getWidth()/40;
-			int moveDistY = u.getMovementDistance()*getHeight()/40;
-			g2.drawRect(x-moveDistX, y-moveDistY, moveDistX*2+getWidth()/20, moveDistY*2+getHeight()/20);
+			int moveDistX = u.getMovementDistance()*getWidth()/20;
+			int moveDistY = u.getMovementDistance()*getHeight()/20;
+			g2.drawRect(x-moveDistX, y-moveDistY, moveDistX*2, moveDistY*2);
 			
 			if(isAttackPhase) {
 				
 			}
 		}
+		repaint();
 	}
 
 
@@ -133,13 +134,13 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 			Unit u = players.get(playerTurn-1);
 			int xPos = e.getX();
 			int yPos = e.getY();
-			System.out.println("(x:"+xPos+", y:"+yPos+")");
-			int moveDistX = u.getMovementDistance()*getWidth()/40;
-			int moveDistY = u.getMovementDistance()*getHeight()/40;
+			//System.out.println("(x:"+xPos+", y:"+yPos+")");
+			int moveDistX = u.getMovementDistance()*getWidth()/20;
+			int moveDistY = u.getMovementDistance()*getHeight()/20;
 			
 			if(!isAttackPhase) {
 				MovementPhase mPhase = new MovementPhase(u);
-				System.out.println(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit());
+				//System.out.println(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit());
 				if(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit()) { 
 					
 					mPhase.run(map.getTileRow(map.getTile(xPos, yPos, getHeight(), getWidth())), 
@@ -155,7 +156,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 				
 				if(!other.hasUnit()) {
 					
-					MovementPhase mPhase = new MovementPhase(u);
+					MovementPhase mPhase = new MovementPhase(u); 
 					
 					mPhase.run(map.getTileRow(other), map.getTileCol(other), getHeight(), getWidth(), map);
 					
