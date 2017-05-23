@@ -52,6 +52,8 @@ public class Unit
 		level = 1;
 		name = "";
 		if(isPlayerControlled) {
+			name += "Player ";
+		} else {
 			name += "Enemy ";
 		}
 		name += "Unit";

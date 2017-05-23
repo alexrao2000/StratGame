@@ -29,12 +29,16 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		this.m = m;
 		setBackground(Color.WHITE);
 		
-		Healer healer = new Healer();
-		Attacker attacker = new Attacker();
+		Healer healer = new Healer(true, 5, 5, 5, 1);
+		Attacker attacker = new Attacker(true, 5, 5, 5, 1);
+		Healer eHealer = new Healer(false, 5, 5, 5, 1);
+		Attacker eAttacker = new Attacker(false, 5, 5, 5, 1);
 		
 		map = new Map();
 		map.getTile(0, 0).addUnit(healer);
 		map.getTile(4, 4).addUnit(attacker);
+		map.getTile(19, 19).addUnit(eHealer);
+		map.getTile(15, 15).addUnit(eAttacker);
 		
 		playerTurn = 0;
 		isAttackPhase = false;
