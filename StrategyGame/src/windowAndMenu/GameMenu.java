@@ -45,7 +45,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		map.getTile(19, 19).addUnit(eHealer);
 		map.getTile(15, 15).addUnit(eAttacker);
 		
-		playerTurn = 1;
+		playerTurn = 2;
 		isAttackPhase = false;
 		players = new ArrayList<Unit>();
 		players.add(healer);
@@ -133,11 +133,14 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 			Unit u = players.get(playerTurn-1);
 			int xPos = e.getX();
 			int yPos = e.getY();
+			System.out.println("(x:"+xPos+", y:"+yPos+")");
+			int moveDistX = u.getMovementDistance()*getWidth()/40;
+			int moveDistY = u.getMovementDistance()*getHeight()/40;
 			
 			if(!isAttackPhase) {
 				MovementPhase mPhase = new MovementPhase(u);
-				
-				if(map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit()) { 
+				System.out.println(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit());
+				if(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit()) { 
 					
 					mPhase.run(map.getTileRow(map.getTile(xPos, yPos, getHeight(), getWidth())), 
 							map.getTileCol(map.getTile(xPos, yPos, getHeight(), getWidth())), getHeight(), 
@@ -150,7 +153,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 				
 				Tile other = map.getTile(xPos, yPos, getHeight(), getWidth());
 				
-				if(other.getUnit().equals(null)) {
+				if(!other.hasUnit()) {
 					
 					MovementPhase mPhase = new MovementPhase(u);
 					

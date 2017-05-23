@@ -80,9 +80,12 @@ public class Map {
 		for(int x = 0; x < 20; x++) {
 			for(int y = 0; y < 20; y++) {
 				if(xPos > xCurr && xPos < xCurr+boxWidth && yPos > yCurr && yPos < yCurr+boxHeight) {
+					System.out.println("(xPos:"+xCurr+", yPos:"+yCurr+")");
 					return map[x][y];
+					
 				}
 				xCurr += boxWidth;
+				
 			}
 			yCurr += boxHeight;
 			xCurr = 0;
@@ -183,7 +186,7 @@ public class Map {
 	public int getUnitRow(Unit u) {
 		for(int r = 0; r < 15; r++) {
 			for(int c = 0; c < 15; c++) {
-				if(map[r][c].getUnit().equals(u)) {
+				if(map[r][c].hasUnit() && map[r][c].getUnit().equals(u)) {
 					return r;
 				}
 			}
@@ -197,7 +200,7 @@ public class Map {
 	public int getUnitCol(Unit u) {
 		for(int r = 0; r < 15; r++) {
 			for(int c = 0; c < 15; c++) {
-				if(map[r][c].getUnit().equals(u)) {
+				if(map[r][c].hasUnit() && map[r][c].getUnit().equals(u)) {
 					return c;
 				}
 			}
