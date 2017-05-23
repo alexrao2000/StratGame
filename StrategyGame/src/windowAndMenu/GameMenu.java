@@ -143,8 +143,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 
 				//System.out.println(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit());
 				Tile newTile = map.getTile(xPos, yPos, getWidth(), getHeight());
-				if(!newTile.hasUnit()) { 
-					
+				if(!newTile.hasUnit() && newTile.getTerrain() != "sea") { 
 					newTile.addUnit(u);
 					map.getTile(u).removeUnit();
 					isAttackPhase = true;
