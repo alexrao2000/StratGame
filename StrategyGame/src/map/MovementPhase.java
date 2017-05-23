@@ -31,8 +31,8 @@ public class MovementPhase {
 		if(r < 20 && r >= 0 && c < 20 &&  c >= 0) {
 			if((r < currentRow+range || r > currentRow+range) && (c < currentCol+range || c > currentCol+range)) {
 				if(!map.getTile(currentRow, currentCol).hasUnit()) {
-					//System.out.println("moveR:"+r+", moveC"+c);
-					map.changeUnitPlace(unit, r, c);
+					System.out.println("moveR:"+r+", moveC"+c);
+					map.changeUnitPlace(unit, c, r);
 				}
 			}
 		}

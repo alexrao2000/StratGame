@@ -142,12 +142,11 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 			if(!isAttackPhase) {
 				MovementPhase mPhase = new MovementPhase(u);
 				//System.out.println(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit());
-				if(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit()) { 
+				Tile newTile = map.getTile(xPos, yPos, moveDistX, moveDistY);
+				if(!newTile.hasUnit()) { 
 					
-					mPhase.run(map.getTileRow(map.getTile(xPos, yPos, getHeight(), getWidth())), 
-							map.getTileCol(map.getTile(xPos, yPos, getHeight(), getWidth())), getHeight(), 
-							getWidth(), map);
-					
+					newTile.addUnit(u);
+					map.getTile(u).removeUnit();
 					isAttackPhase = true;
 				}
 				
