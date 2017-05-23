@@ -1,6 +1,7 @@
 package windowAndMenu;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -44,7 +45,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		map.getTile(19, 19).addUnit(eHealer);
 		map.getTile(15, 15).addUnit(eAttacker);
 		
-		playerTurn = 0;
+		playerTurn = 1;
 		isAttackPhase = false;
 		players = new ArrayList<Unit>();
 		players.add(healer);
@@ -81,6 +82,25 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 
 		// TODO Add any custom drawings here
 		map.paintComponent(g2, height, width);
+		
+		g2.setFont(new Font(Font.SERIF, Font.BOLD, 20));
+		if(playerTurn != 0) {
+			Unit u = players.get(playerTurn-1);
+			
+			g2.drawString(u.getName(), 0, 20);
+			
+			Tile tile = map.getTile(map.getTileXPos(map.getTile(u), getWidth()), map.getTileXPos(map.getTile(u), getHeight()), getHeight(), getWidth());
+			int x = map.getTileXPos(tile, getWidth());
+			int y = map.getTileYPos(tile, getHeight()); 
+			g2.setColor(Color.RED);
+			int moveDistX = u.getMovementDistance()*getWidth()/40;
+			int moveDistY = u.getMovementDistance()*getHeight()/40;
+			g2.drawRect(x-moveDistX, y-moveDistY, moveDistX*2+getWidth()/20, moveDistY*2+getHeight()/20);
+			
+			if(isAttackPhase) {
+				
+			}
+		}
 	}
 
 
@@ -108,7 +128,6 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.print("hi");
 		if(playerTurn != 0) {
 			
 			Unit u = players.get(playerTurn-1);
@@ -116,12 +135,9 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 			int yPos = e.getY();
 			
 			if(!isAttackPhase) {
-				
-				
-				
 				MovementPhase mPhase = new MovementPhase(u);
 				
-				if(map.getTile(xPos, yPos, getHeight(), getWidth()).getUnit().equals(null)) { 
+				if(map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit()) { 
 					
 					mPhase.run(map.getTileRow(map.getTile(xPos, yPos, getHeight(), getWidth())), 
 							map.getTileCol(map.getTile(xPos, yPos, getHeight(), getWidth())), getHeight(), 
