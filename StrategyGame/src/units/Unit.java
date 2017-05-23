@@ -51,9 +51,7 @@ public class Unit
 		this.actionDistance = actionDistance;
 		level = 1;
 		name = "";
-		if(isPlayerControlled) {
-			name += "Player ";
-		} else {
+		if(!isPlayerControlled) {
 			name += "Enemy ";
 		}
 		name += "Unit";

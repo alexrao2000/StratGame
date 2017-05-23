@@ -30,7 +30,7 @@ public class Attacker extends Unit{
 		super(isPlayerControlled, hp, power, movementDistance, attackDistance);
 		weapon = new Weapon();
 		name = "";
-		if(isPlayerControlled) {
+		if(!isPlayerControlled) {
 			name += "Enemy ";
 		}
 		

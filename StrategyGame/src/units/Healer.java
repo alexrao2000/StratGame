@@ -33,7 +33,7 @@ public class Healer extends Unit
 	{
 		super(isPlayerControlled, hp, power, movementDistance, healDistance);
 		name = "";
-		if(isPlayerControlled) {
+		if(!isPlayerControlled) {
 			name += "Enemy ";
 		}
 		name += "Healer";
