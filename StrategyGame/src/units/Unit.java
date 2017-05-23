@@ -19,6 +19,7 @@ public class Unit
 	private int actionDistance;//the distance the unit can heal/attack
 	private int level;
 	private String name;
+	private boolean canMove;
 	
 	
 	/**
@@ -55,7 +56,16 @@ public class Unit
 			name += "Enemy ";
 		}
 		name += "Unit";
+		canMove = true;
 		//map == null;
+	}
+	
+	public boolean canMove() {
+		return canMove;
+	}
+	
+	public void setCanMove(boolean move) {
+		canMove = move;
 	}
 	
 	/**Heals the unit
