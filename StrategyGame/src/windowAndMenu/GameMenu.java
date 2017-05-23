@@ -142,7 +142,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 			if(!isAttackPhase) {
 
 				//System.out.println(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit());
-				Tile newTile = map.getTile(xPos, yPos, getWidth(), getHeight());
+				Tile newTile = map.getTile(xPos, yPos, getHeight(), getWidth());
 				if(!newTile.hasUnit() && newTile.getTerrain() != "sea") { 
 					newTile.addUnit(u);
 					map.getTile(u).removeUnit();
@@ -151,7 +151,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 				
 			} else {
 				
-				Tile other = map.getTile(xPos, yPos, getHeight(), getWidth());
+				Tile other = map.getTile(xPos, yPos, getWidth(), getHeight());
 				
 				if(!other.hasUnit()) {
 					 
