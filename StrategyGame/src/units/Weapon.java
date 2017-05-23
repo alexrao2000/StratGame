@@ -19,7 +19,7 @@ public class Weapon
 	/**Creates a weapon
 	 * 
 	 * @param name name of weapon
-	 * @param strength 
+	 * @param strength the strength of the unit
 	 */
 	public Weapon(String name, int strength)
 	{

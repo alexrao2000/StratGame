@@ -52,7 +52,7 @@ public class Tile {
 	
 	/**
 	 * Adds a unit to the tile
-	 * @param the unit to be added to the tile
+	 * @param object the unit to be added to the tile
 	 * */
 	public void addUnit(Unit object) {
 		unit = object;
