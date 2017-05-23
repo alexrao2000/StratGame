@@ -5,11 +5,22 @@ import units.*;
 public class MovementPhase {
 	private Unit unit;
 	
-	
+	/**
+	 * Creates a movement phase where a unit can move
+	 * @param u the unit that will move
+	 * */
 	public MovementPhase(Unit u) {
 		unit = u;
 	}
 	
+	/**
+	 * Moves the unit to another spot
+	 * @param xPos the x coordinate to move to
+	 * @param yPos the y coordinate to move to
+	 * @param width the width of the map
+	 * @param height the height of the map
+	 * @param map the map the unit will move on
+	 * */
 	public void run(int xPos, int yPos, int height, int width, Map map) {
 		int range = unit.getMovementDistance();
 		int currentRow = map.getUnitRow(unit);

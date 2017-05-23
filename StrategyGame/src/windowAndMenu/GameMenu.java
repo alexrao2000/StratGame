@@ -23,7 +23,11 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 	private ArrayList<Unit> enemies;
 	private int playerTurn;
 	private boolean isAttackPhase;
-
+	
+	/**
+	 * Constructs a game menu
+	 * @param m the main class
+	 * */
 	public GameMenu (Main m) {
 		super();
 		this.m = m;
@@ -54,7 +58,10 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 
 	}
 
-
+	/**
+	 * Draws the game menu
+	 * @param g the graphics object
+	 * */
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);  // Call JPanel's paintComponent method to paint the background
