@@ -96,7 +96,6 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 			int moveDistX = u.getMovementDistance()*getWidth()/40;
 			int moveDistY = u.getMovementDistance()*getHeight()/40;
 			g2.drawRect(x-moveDistX, y-moveDistY, moveDistX*2+getWidth()/20, moveDistY*2+getHeight()/20);
-			g2.drawLine(x-moveDistX, y-moveDistY, x+moveDistX+getWidth()/20, y+moveDistY+getHeight()/20);
 			
 			if(isAttackPhase) {
 				
