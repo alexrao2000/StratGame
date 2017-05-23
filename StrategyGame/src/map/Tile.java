@@ -37,6 +37,13 @@ public class Tile {
 		unit = object;
 	}
 	
+	public boolean hasUnit() {
+		if(unit.equals(null)) {
+			return false;
+		}
+		return true;
+	}
+	
 	public void removeUnit() {
 		unit = null;
 	}
