@@ -140,7 +140,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 			int moveDistY = u.getMovementDistance()*getHeight()/20;
 			
 			if(!isAttackPhase) {
-				MovementPhase mPhase = new MovementPhase(u);
+
 				//System.out.println(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit());
 				Tile newTile = map.getTile(xPos, yPos, getWidth(), getHeight());
 				if(!newTile.hasUnit()) { 
@@ -155,10 +155,8 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 				Tile other = map.getTile(xPos, yPos, getHeight(), getWidth());
 				
 				if(!other.hasUnit()) {
+					 
 					
-					MovementPhase mPhase = new MovementPhase(u); 
-					
-					mPhase.run(map.getTileRow(other), map.getTileCol(other), getHeight(), getWidth(), map);
 					
 					isAttackPhase = false;
 					
