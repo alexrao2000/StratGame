@@ -33,7 +33,6 @@ public class MovementPhase {
 				if(!map.getTile(currentRow, currentCol).hasUnit()) {
 					//System.out.println("moveR:"+r+", moveC"+c);
 					map.changeUnitPlace(unit, r, c);
-					
 				}
 			}
 		}

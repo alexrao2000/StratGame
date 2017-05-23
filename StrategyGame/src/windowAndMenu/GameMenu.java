@@ -102,6 +102,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 			}
 		}
 		repaint();
+		
 	}
 
 

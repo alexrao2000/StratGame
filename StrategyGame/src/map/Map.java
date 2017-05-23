@@ -31,6 +31,7 @@ public class Map {
 		}
 	}
 	
+	
 	public int getRows() {
 		return map.length;
 	}
