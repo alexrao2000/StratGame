@@ -67,7 +67,7 @@ public class Map {
 				return map[r][c];
 			}
 		}
-		return null;
+		return new Tile("nonexistent");
 	}
 	
 	public Tile getTile(int xPos, int yPos, int height, int width) {
@@ -88,7 +88,7 @@ public class Map {
 			xCurr = 0;
 		}
 		
-		return null;
+		return new Tile("nonexistent");
 	}
 	
 	public int getTileXPos(Tile tile, int width) {
