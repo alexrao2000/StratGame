@@ -84,7 +84,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		map.paintComponent(g2, height, width);
 		
 		g2.setFont(new Font(Font.SERIF, Font.BOLD, 20));
-		if(playerTurn != 0) {
+		/*if(playerTurn != 0) {
 			Unit u = players.get(playerTurn-1);
 			
 			g2.drawString(u.getName(), 0, 20);
@@ -101,7 +101,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 				
 			}
 		}
-		repaint();
+		repaint();*/
 		
 	}
 
@@ -130,7 +130,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(playerTurn != 0) {
+		if(playerTurn != 0 && playerTurn <= players.size()) {
 			
 			Unit u = players.get(playerTurn-1);
 			int xPos = e.getX();
@@ -148,9 +148,9 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 				if(!newTile.hasUnit() && newTile.getTerrain() != "sea" && distance <= u.getMovementDistance() && u.canMove() == true) { 
 					newTile.addUnit(u);
 					oldTile.removeUnit();
-					isAttackPhase = true;
 					u.setCanMove(false);
-					
+					repaint();
+					playerTurn++;
 				}
 				
 			} else {
@@ -179,9 +179,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 					
 				} 
 			}
-			playerTurn++;
 		}
-		
 	}
 
 
