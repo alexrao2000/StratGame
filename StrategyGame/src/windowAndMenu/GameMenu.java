@@ -144,7 +144,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 				//System.out.println(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit());
 				Tile newTile = map.getTile(xPos, yPos, getHeight(), getWidth());
 				Tile oldTile = map.getTile(u);
-				double distance = Math.sqrt(Math.pow((map.getTileRow(oldTile) - map.getTileRow(newTile)), 2) + Math.pow((map.getTileCol(oldTile) - map.getTileCol(newTile)), 2));
+				double distance = (map.getTileRow(newTile) - map.getTileRow(oldTile)) + (map.getTileCol(newTile) - map.getTileCol(oldTile));
 				if(!newTile.hasUnit() && newTile.getTerrain() != "sea" && distance <= u.getMovementDistance() && u.canMove() == true) { 
 					newTile.addUnit(u);
 					oldTile.removeUnit();
