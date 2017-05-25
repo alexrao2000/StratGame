@@ -98,7 +98,7 @@ public class Unit
 	
 	/**
 	 * Sets whether the unit has moved already
-	 * @param act true or false signifying whether the unit has moved
+	 * @param move true or false signifying whether the unit has moved
 	 */
 	public void setCanMove(boolean move) {
 		canMove = move;
