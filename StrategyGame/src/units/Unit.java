@@ -64,18 +64,42 @@ public class Unit
 		//map == null;
 	}
 	
+	/**
+	 * Sets whether the unit is controllable
+	 * @param control true or false signifying whether the unit is controllable 
+	 */
+	public void setIsPlayerControlled(boolean control) {
+		isPlayerControlled = control;
+	}
+	
+	/**
+	 * Determines whether a unit as acted on its turn or not
+	 * @return true or false depending on whether the unit expended its turn
+	 */
 	public boolean hasActed() {
 		return hasActed;
 	}
 	
+	/**
+	 * Sets whether the unit has performed an action
+	 * @param act true or false signifying whether the unit has already performed an action
+	 */
 	public void setHasActed(boolean act) {
 		hasActed = act;
 	}
 	
+	/**
+	 * Determines whether a unit can move anymore
+	 * @return true or false depending on whether the unit has already moved
+	 */
 	public boolean canMove() {
 		return canMove;
 	}
 	
+	/**
+	 * Sets whether the unit has moved already
+	 * @param act true or false signifying whether the unit has moved
+	 */
 	public void setCanMove(boolean move) {
 		canMove = move;
 	}

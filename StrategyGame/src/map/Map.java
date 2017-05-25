@@ -24,8 +24,8 @@ public class Map {
 				map[i][j] = new Tile("land");
 			}
 		}
-		for (int i = 15; i < map[0].length; i++) {
-			for (int j = 15; j < map.length; j++) {
+		for (int i = 6; i < 9; i++) {
+			for (int j = 6; j < 9; j++) {
 				map[i][j] = new Tile("land");
 			}
 		}

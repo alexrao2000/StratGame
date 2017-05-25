@@ -80,8 +80,13 @@ public class Attacker extends Unit{
 	public void draw(Graphics g, int xCor, int xDist, int yCor, int yDist)
 	{
 		g.setColor(Color.RED);
-		if (super.isPlayerControlled())
+		if (super.getAttackDistance() > 1)
+			g.setColor(Color.PINK);
+		if (super.isPlayerControlled()) {
 			g.setColor(Color.BLUE);
+			if (super.getAttackDistance() > 1)
+				g.setColor(new Color(31, 190, 214));
+		}
 		if (hasActed())
 			g.setColor(Color.GRAY);
 		g.fillOval(xCor, yCor, xDist, yDist);
