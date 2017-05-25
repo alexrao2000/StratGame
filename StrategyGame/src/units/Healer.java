@@ -70,6 +70,8 @@ public class Healer extends Unit
 		g.setColor(Color.RED);
 		if (super.isPlayerControlled())
 			g.setColor(Color.BLUE);
+		if (hasActed())
+			g.setColor(Color.GRAY);
 		g.fillRect(xCor, yCor, xDist, yDist);
 		g.setColor(Color.BLACK);
 	}

@@ -82,6 +82,8 @@ public class Attacker extends Unit{
 		g.setColor(Color.RED);
 		if (super.isPlayerControlled())
 			g.setColor(Color.BLUE);
+		if (hasActed())
+			g.setColor(Color.GRAY);
 		g.fillOval(xCor, yCor, xDist, yDist);
 		g.setColor(Color.BLACK);
 		

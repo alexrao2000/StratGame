@@ -20,6 +20,7 @@ public class Unit
 	private int level;
 	private String name;
 	private boolean canMove;
+	private boolean hasActed;
 	
 	
 	/**
@@ -33,6 +34,8 @@ public class Unit
 		actionDistance = 1;
 		level = 1;
 		name = "Unit";
+		canMove = true;
+		hasActed = false;
 	}
 	
 	/**Creates a unit
@@ -57,7 +60,16 @@ public class Unit
 		}
 		name += "Unit";
 		canMove = true;
+		hasActed = false;
 		//map == null;
+	}
+	
+	public boolean hasActed() {
+		return hasActed;
+	}
+	
+	public void setHasActed(boolean act) {
+		hasActed = act;
 	}
 	
 	public boolean canMove() {

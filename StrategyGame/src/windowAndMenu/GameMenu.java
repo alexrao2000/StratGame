@@ -20,10 +20,13 @@ import units.*;
 public class GameMenu extends JPanel implements KeyListener, MouseListener {
 	private Map map;
 	private Main m;
-	private ArrayList<Unit> players;
-	private ArrayList<Unit> enemies;
+	private ArrayList<Unit> player1;
+	private ArrayList<Unit> player2;
 	private int playerTurn;
 	private boolean isAttackPhase;
+	private Tile backOneTile;
+	private Tile thisTile;
+	private boolean thePlayer;
 	
 	/**
 	 * Constructs a game menu
@@ -41,19 +44,20 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		
 		map = new Map();
 		map.getTile(0, 0).addUnit(healer);
-		map.getTile(4, 4).addUnit(attacker);
+		map.getTile(3, 3).addUnit(attacker);
 		map.getTile(19, 19).addUnit(eHealer);
 		map.getTile(15, 15).addUnit(eAttacker);
 		
+		thePlayer = true;
 		playerTurn = 1;
 		isAttackPhase = false;
-		players = new ArrayList<Unit>();
-		players.add(healer);
-		players.add(attacker);
+		player1 = new ArrayList<Unit>();
+		player1.add(healer);
+		player1.add(attacker);
 		
-		enemies = new ArrayList<Unit>();
-		enemies.add(eHealer);
-		enemies.add(eAttacker);
+		player2 = new ArrayList<Unit>();
+		player2.add(eHealer);
+		player2.add(eAttacker);
 		
 		addMouseListener(this);
 
@@ -85,7 +89,7 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		
 		g2.setFont(new Font(Font.SERIF, Font.BOLD, 20));
 		/*if(playerTurn != 0) {
-			Unit u = players.get(playerTurn-1);
+			Unit u = player1.get(playerTurn-1);
 			
 			g2.drawString(u.getName(), 0, 20);
 			
@@ -113,72 +117,78 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 		}
 	}
 
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(playerTurn != 0 && playerTurn <= players.size()) {
-			
-			Unit u = players.get(playerTurn-1);
+		if(playerTurn != 0 && playerTurn <= player1.size()) {
+			Unit u;
+			if (thePlayer) {
+				u = player1.get(playerTurn-1);
+			} else {
+				u = player2.get(playerTurn-1);
+			}
 			int xPos = e.getX();
 			int yPos = e.getY();
 			//System.out.println("(x:"+xPos+", y:"+yPos+")");
-			int moveDistX = u.getMovementDistance()*getWidth()/20;
-			int moveDistY = u.getMovementDistance()*getHeight()/20;
+			
+			Tile newTile = map.getTile(xPos, yPos, getHeight(), getWidth());
+			Tile oldTile = map.getTile(u);
 			
 			if(!isAttackPhase) {
 
 				//System.out.println(!map.getTile(xPos, yPos, getHeight(), getWidth()).hasUnit());
-				Tile newTile = map.getTile(xPos, yPos, getHeight(), getWidth());
-				Tile oldTile = map.getTile(u);
 				double distance = (map.getTileRow(newTile) - map.getTileRow(oldTile)) + (map.getTileCol(newTile) - map.getTileCol(oldTile));
-				if(!newTile.hasUnit() && newTile.getTerrain() != "sea" && distance <= u.getMovementDistance() && u.canMove() == true) { 
+				if(!newTile.hasUnit() && newTile.getTerrain() != "sea" && distance <= u.getMovementDistance()) { 
 					newTile.addUnit(u);
 					oldTile.removeUnit();
+					backOneTile = oldTile;
+					thisTile = newTile;
 					u.setCanMove(false);
 					repaint();
-					playerTurn++;
+					isAttackPhase = true;
 				}
 				
 			} else {
 				
-				Tile other = map.getTile(xPos, yPos, getWidth(), getHeight());
+				double range = (map.getTileRow(newTile) - map.getTileRow(oldTile)) + (map.getTileCol(newTile) - map.getTileCol(oldTile));
 				
-				if(!other.hasUnit()) {
-					 
+				if (newTile.getUnit() == u) {
 					
+					u.setHasActed(true);
 					
-					isAttackPhase = false;
+				} else if(u instanceof Attacker && newTile.hasUnit() && range <= u.getAttackDistance() && !newTile.getUnit().isPlayerControlled()) {
 					
-				} else if(other.getUnit() instanceof Attacker) {
+					System.out.println(newTile.getUnit().getHP());
+					((Attacker) u).attack(newTile.getUnit());
+					System.out.println(newTile.getUnit().getHP());
+					u.setHasActed(true);
 					
-					if(!other.getUnit().isPlayerControlled()) {
-						other.getUnit().takeDamage(u.getPower());
-						isAttackPhase = false;
-					}
+				} else if(u instanceof Healer && newTile.hasUnit() && range <= u.getAttackDistance() && newTile.getUnit().isPlayerControlled()) {
 					
-				} else if(u instanceof Healer) {
+					System.out.println(newTile.getUnit().getHP());
+					((Healer) u).heal(newTile.getUnit());
+					System.out.println(newTile.getUnit().getHP());
+					u.setHasActed(true);
 					
-					if(other.getUnit().isPlayerControlled()) {
-						((Healer) u).heal(other.getUnit());
-						isAttackPhase = false;
-					}
+				} else {
 					
-				} 
+					backOneTile.addUnit(u);
+					thisTile.removeUnit();
+					backOneTile = null;
+					thisTile = null;
+					u.setCanMove(true);
+					repaint();
+					playerTurn--;
+					
+				}
+				
+				isAttackPhase = false;
+				repaint();
+				playerTurn++;
 			}
+		} else {
+			thePlayer = !thePlayer;
+			playerTurn = 1;
+			repaint();
 		}
 	}
 
@@ -206,6 +216,18 @@ public class GameMenu extends JPanel implements KeyListener, MouseListener {
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
