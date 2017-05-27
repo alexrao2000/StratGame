@@ -3,13 +3,20 @@ package units;
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**This class represents an attacking unit
+ * 
+ * @author ethan
+ *
+ */
 public class Attacker extends Unit{
 	
 	
-	//private ArrayList<Weapon> weapons;
 	private Weapon weapon;
 	private String name;
 	
+	/**Creates a default attacker with hp and power initialized at 10, movementDistance at 15, and attackDistance at 1
+	 * 
+	 */
 	public Attacker()
 	{
 		super(true, 10, 10, 15, 1);
